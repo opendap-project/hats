@@ -1,0 +1,56 @@
+# The HAT interface v2 contact field: functions, electrical classes and pogo positions.
+# Source of the contact list (§4) and pogo field (§9.1) tables of docs/specs/interface-v2.md,
+# rendered with `python3 tools/hat_interface.py render`.
+schema = "opendap.hat-contacts/v1"
+interface = "hat-v2"
+revision = "2.0"
+status = "draft"
+
+[[function]]
+name = "SuperSpeed"
+signals = [{ name = "SSTX±", direction = "out" }, { name = "SSRX±", direction = "in" }]
+pins = ["SSTX+", "SSTX−", "SSRX+", "SSRX−"]
+pairs = 2
+electrical_class = "USB 3 SuperSpeed, 90 Ω differential"
+notes = "TX AC-coupling capacitors on the transmitting side (device for `SSTX`, HAT for `SSRX`)"
+
+[[function]]
+name = "USB 2.0"
+signals = [{ name = "D±" }]
+pins = ["D+", "D−"]
+pairs = 1
+electrical_class = "USB 2.0, 90 Ω differential"
+notes = "The USB 2.0 half of the same port"
+
+[[function]]
+name = "Configuration channel"
+signals = [{ name = "CC" }]
+pins = ["CC"]
+electrical_class = "USB Type-C CC, USB PD"
+notes = "Required: power follows USB PD (§5). One CC: the field is keyed and never flipped. No VCONN, no SBU (§6)"
+
+[[function]]
+name = "Power"
+signals = [{ name = "VBUS" }]
+pins = ["VBUS"]
+electrical_class = "5 V"
+notes = "§5"
+
+[[function]]
+name = "Ground"
+signals = [{ name = "GND" }]
+pins = ["GND"]
+notes = "4 power returns, 4 pair fence, 1 guard; one net"
+
+# Positions looking at the pogo tips on the device-side piece; the HAT pad map is its mirror image.
+[field]
+pitch_mm = 2.54
+columns = 10
+
+[[field.row]]
+name = "A"
+contacts = ["GND", "SSTX+", "SSTX−", "GND", "SSRX+", "SSRX−", "GND", "D+", "D−", "GND"]
+
+[[field.row]]
+name = "B"
+contacts = ["VBUS", "GND", "VBUS", "GND", "VBUS", "GND", "VBUS", "GND", "GND", "CC"]

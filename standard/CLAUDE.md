@@ -10,4 +10,5 @@ Contributor rules (English, confirmed information only, REUSE licensing, the `do
 
 ## Working here
 
+- The HAT interface v2 contact, power and pogo-field tables are edited in `interfaces/hat-v2/*.toml`; the spec's tables between `generated` markers are rendered with `python3 tools/hat_interface.py render` and checked in pre-commit. Values are copied from a cited source, never inferred.
 - Requirements are edited in `docs/requirements/requirements.toml`; `docs/requirements/README.md` is rendered from it with `odapkit req render` and never edited by hand.

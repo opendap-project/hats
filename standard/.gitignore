@@ -16,3 +16,7 @@ _autosave-*
 *.lck
 ~*.lck
 fab/
+
+# Python
+__pycache__/
+.pytest_cache/

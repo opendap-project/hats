@@ -1,0 +1,64 @@
+# The HAT interface v2 power data: contact ratings, contact margins and power roles.
+# Source of the §5.1 and §5.2 tables of docs/specs/interface-v2.md,
+# rendered with `python3 tools/hat_interface.py render`.
+schema = "opendap.hat-power/v1"
+interface = "hat-v2"
+revision = "2.0"
+status = "draft"
+
+[[rail]]
+name = "VBUS"
+voltage = "vSafe5V by default; a USB PD Standard Power Range voltage after a contract"
+direction = "out to a sink HAT, in from a source HAT"
+rating_a = 3.0
+rating_note = "either direction, at any negotiated voltage"
+fault_ceiling_a = 4.5
+pogo_contacts = 4
+t1_flat_cable_contacts = 15
+
+[[rail]]
+name = "GND"
+role = "power return"
+direction = "return"
+rating_a = 3.0
+fault_ceiling_a = 4.5
+pogo_contacts = 4
+pogo_contacts_extra = "5 fence and guard"
+t1_flat_cable_contacts = 15
+t1_flat_cable_contacts_extra = "5 pair grounds"
+
+# Margin rule (board BRD-049): each contact at or below 70 % of its rating in continuous use,
+# and at or below 100 % at the fault ceiling, also with one contact open.
+# The per-contact currents are computed from the VBUS rail's rating and fault ceiling.
+[[contact]]
+name = "Pogo (Mill-Max 0965 or Harwin P70-1000045R)"
+rating_a = 2
+rating_note = "both parts"
+rails = "`VBUS` ×4, return ×4"
+contacts_per_rail = 4
+one_contact_open = true
+
+[[contact]]
+name = "DF40 (Hirose catalog 2020, p. 2)"
+rating_a = 0.3
+rails = "`VBUS` ×15, `GND` ×15"
+contacts_per_rail = 15
+one_contact_open = false
+
+[[role]]
+id = "sink"
+name = "Sink"
+does = "Draws power from the device"
+negotiation = "Type-C current (Default, 1.5 A, 3.0 A at 5 V) or a PD contract the device offers"
+
+[[role]]
+id = "source"
+name = "Source"
+does = "Powers or charges the device (for example a powerbank)"
+negotiation = "The HAT offers its PD source capabilities; the device takes a contract within its input capability"
+
+[[role]]
+id = "dual-role"
+name = "Dual-role"
+does = "Either, as agreed (for example a HAT with its own battery)"
+negotiation = "PD power role swap"

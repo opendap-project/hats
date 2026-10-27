@@ -1,0 +1,4 @@
+| Col | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 |
+|---|---|---|---|---|---|---|---|---|---|---|
+| **Row A** | GND | SSTX+ | SSTX− | GND | SSRX+ | SSRX− | GND | D+ | D− | GND |
+| **Row B** | VBUS | GND | VBUS | GND | VBUS | GND | VBUS | GND | GND | CC |

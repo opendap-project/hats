@@ -1,0 +1,4 @@
+| Contact | Rating | Rail | Continuous per contact | With one contact open | At the fault ceiling | Ceiling, one contact open |
+|---|---|---|---|---|---|---|
+| Pogo (Mill-Max 0965 or Harwin P70-1000045R) | 2 A (both parts) | `VBUS` ×4, return ×4 | 0.75 A (38 %) | 1.00 A (50 %) | 1.13 A (56 %) | 1.50 A (75 %) |
+| DF40 (Hirose catalog 2020, p. 2) | 0.3 A | `VBUS` ×15, `GND` ×15 | 0.20 A (67 %) | — | 0.30 A (100 %) | — |

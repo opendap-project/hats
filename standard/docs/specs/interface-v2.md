@@ -2,9 +2,9 @@
 
 - **Revision:** v2.0 (Draft), 2026-10-25. It supersedes the [HAT interface v1](interface-v1.md) (revision v1.1), which stays as history. v2 is a new major revision: a v1 HAT does not fit a v2 device, and the reverse. Nothing was built against v1. Nothing here is built or measured.
 - **Status:** Draft. The pad map freezes only after the signal-integrity test coupon (§11).
-- **Updated 2026-10-25 ([RFC 0015](https://github.com/opendap-project/rfcs/blob/main/text/0015-hat-connector-pogo-field-and-usb-c-port-hat.md)):** the pogo field is confirmed as the HAT connector; the Mill-Max 0965 is the primary pogo part and the Harwin P70 the alternate, each on its own hard-stop height (ADR 0004 amendment); spring force and the pad-plane tolerance rule (§9.1); the T1 accepts 5 V only from a HAT (§5.2); the USB-C port HAT joins the reference HATs (§10). The contact map does not change.
 - **Requirements:** HCS-001 to HCS-031, in particular HCS-027 (USB only), HCS-028 (connector contents), HCS-029 (identity, presence and wake over USB), HCS-030 (power follows USB PD), HCS-031 (HAT minimum conditions, Draft), HCS-004 (no cap on high-speed rates), HCS-005 (compromises justified), HCS-006 (one interconnect type), HCS-013 (programmable HAT chips), HCS-021 (hardware-agnostic) and HCS-023 (device-side piece).
 - **Decisions:** [ADR 0001](../adr/0001-all-pogo-interface-with-fixed-device-side-piece.md) (all-pogo interface, fixed device-side piece); [ADR 0004](../adr/0004-pogo-part-and-field-geometry.md) (pogo part and pitch, 2.54 mm); [ADR 0007](../adr/0007-pogo-field-kept-for-interface-v2-mill-max-0965-primary.md) (the pogo field for interface v2, Mill-Max 0965 primary, Harwin P70 alternate); [ADR 0006](../adr/0006-hats-are-usb-only.md) (HATs are USB only; this revision). [ADR 0002](../adr/0002-interface-v1-native-high-speed-management-over-usb.md), [ADR 0003](../adr/0003-compatibility-levels.md) and [ADR 0005](../adr/0005-interface-v1-1-shared-extension-and-contact-reduction.md) are superseded by ADR 0006.
+- **Data:** the contact list (§4), the contact ratings and margins (§5.1), the power roles (§5.2) and the pogo field (§9.1) are generated from [`interfaces/hat-v2/`](../../interfaces/hat-v2/) (`contacts.toml`, `power.toml`) between `generated` markers with `python3 tools/hat_interface.py render`; edit the data, not the tables. The identity record's fields (§7) have a schema there too (`identity.schema.json`).
 - **Conventions:** **UNVERIFIED** = no primary source checked. **EST** = estimate. "Device" is the product the HAT attaches to (the T1 today); "HAT" is the accessory. *Out* = device to HAT, *in* = HAT to device.
 
 ## 1. Scope
@@ -23,27 +23,13 @@ The interface has two stages:
 - **One interface, no levels.** There are no compatibility levels, no optional contact groups and no reserved contacts. Every device offers all 20 contacts; a HAT uses what it needs (a USB 2.0-only HAT leaves the SuperSpeed pads unconnected).
 - **Growth** comes from USB itself: new classes, descriptors, link generations and PD messages need no new contact. A change to the contact field is a new major revision of this document.
 
-## 3. Changes against v1.1
+## 3. Relation to v1
 
-| Item | v1.1 | v2 | Reason |
-|---|---|---|---|
-| Contacts | 68 in a 4 × 17 field (L1 29, L2 45, L3 68) | **20 in a 2 × 10 field** | ADR 0006 |
-| Levels | L1 Core, L2 Control and audio, L3 High-speed extension | none | ADR 0006 |
-| USB 3 port with its USB 2.0 pair | L1 | kept: the whole interface | — |
-| PCIe x1 or CSI-2 on a shared extension, sidebands | L3 | removed | Over USB: mass storage (UAS), UVC |
-| I2S port on the device's DAC clock, `I2S_MCLK` | L2 | removed | USB Audio Class 2, asynchronous |
-| `GPIO0`–`GPIO3`, SWD alternate, `HAT_RST#` | L2 | removed | HID, DLN2, CDC; recovery over USB (§8) |
-| General I2C | L1 | removed | Behind a USB bridge (DLN2) |
-| ID EEPROM bus (`ID_SCL`, `ID_SDA`) | L1 | removed | USB descriptors (§7) |
-| `HAT_DET#` presence | L1 | removed | Attach on CC (§6) |
-| `HAT_INT#` interrupt and wake | L1 | removed | USB interrupt endpoints and remote wakeup (§6.4) |
-| `HAT_5V` (2.0 A) and `HAT_3V3` (1.0 A) | L1 | **VBUS, 3.0 A**, vSafe5V or a PD contract | USB PD; a HAT regulates its own lower rails |
-| Power classes A, B, F | Draft | Sink, source and dual-role HATs; levels and voltages negotiated by USB Type-C and USB PD (§5.2) | HCS-030 |
-| CC | — | **added, required** | Attach, USB PD power negotiation and roles (§5, §6) |
-| Reserved contacts | 8 | 0 | ADR 0006 |
-| Flat cable (T1) | DF40C-100 per end, 87 of 96 used | DF40C-50 per end, 42 of 46 used | §9.2 |
+v2 replaces the [HAT interface v1](interface-v1.md) (revision v1.1) as a new major revision. What v1.1 carried and how each function reaches the device in v2 are in [ADR 0006](../adr/0006-hats-are-usb-only.md) (Context, Decision and Consequences) and §10.1.
 
 ## 4. Contact list
+
+<!-- generated:contact-list:start -->
 
 | Function | Signals (direction) | Pogo contacts | Electrical class | Notes |
 |---|---|---|---|---|
@@ -54,6 +40,8 @@ The interface has two stages:
 | Ground | `GND` | 9 | — | 4 power returns, 4 pair fence, 1 guard; one net |
 | **Total** | | **20** | | |
 
+<!-- generated:contact-list:end -->
+
 **Rates.** The interface sets the lane count and the electrical class, not a rate (HCS-004). The link runs at the highest USB rate both sides and the channel support; the T1's port is USB 3 Gen 1 (5 Gb/s). Rates are measured on hardware at the end.
 
 ## 5. Power
@@ -62,27 +50,39 @@ Power on the HAT interface follows **USB Power Delivery** (HCS-030, ADR 0006): p
 
 ### 5.1 Contact ratings
 
+<!-- generated:power-ratings:start -->
+
 | Rail | Voltage | Direction | Interface rating (continuous) | Interface fault ceiling | Pogo contacts | DF40 contacts (T1) |
 |---|---|---|---|---|---|---|
 | `VBUS` | vSafe5V by default; a USB PD Standard Power Range voltage after a contract | out to a sink HAT, in from a source HAT | 3.0 A either direction, at any negotiated voltage | 4.5 A | 4 | 15 |
 | `GND` (power return) | — | return | 3.0 A | 4.5 A | 4 (+ 5 fence and guard) | 15 (+ 5 pair grounds) |
 
+<!-- generated:power-ratings:end -->
+
 - **3.0 A** is the highest current USB defines without an electronically marked cable (USB Type-C Current 3.0 A; USB PD up to 3 A), so a contract never needs more than the contacts carry. USB PD Extended Power Range is not part of v2.
 - **Voltage:** every side starts at vSafe5V; a higher Standard Power Range voltage applies only after both sides agree it in a PD contract. The contacts and the device-side protection are rated for the highest voltage the device sources or accepts; neither pogo part's data gives a voltage rating (**UNVERIFIED** above 5 V).
 - **Margin rule (board BRD-049):** each contact at or below 70 % of its rating in continuous use, and at or below 100 % at the fault ceiling, also with one contact open. Count rule: the fewest contacts at ≤ 70 % plus one for redundancy.
 
+<!-- generated:power-margins:start -->
+
 | Contact | Rating | Rail | Continuous per contact | With one contact open | At the fault ceiling | Ceiling, one contact open |
 |---|---|---|---|---|---|---|
-| Pogo (Mill-Max 0965 or Harwin P70-1000045R) | 2 A (both parts) | `VBUS` ×4, return ×4 | 0.75 A (38 %) | 1.0 A (50 %) | 1.13 A (56 %) | 1.5 A (75 %) |
+| Pogo (Mill-Max 0965 or Harwin P70-1000045R) | 2 A (both parts) | `VBUS` ×4, return ×4 | 0.75 A (38 %) | 1.00 A (50 %) | 1.13 A (56 %) | 1.50 A (75 %) |
 | DF40 (Hirose catalog 2020, p. 2) | 0.3 A | `VBUS` ×15, `GND` ×15 | 0.20 A (67 %) | — | 0.30 A (100 %) | — |
 
+<!-- generated:power-margins:end -->
+
 ### 5.2 Power roles and levels (HCS-030)
+
+<!-- generated:power-roles:start -->
 
 | HAT role | What it does | Negotiation |
 |---|---|---|
 | **Sink** | Draws power from the device | Type-C current (Default, 1.5 A, 3.0 A at 5 V) or a PD contract the device offers |
 | **Source** | Powers or charges the device (for example a powerbank) | The HAT offers its PD source capabilities; the device takes a contract within its input capability |
 | **Dual-role** | Either, as agreed (for example a HAT with its own battery) | PD power role swap |
+
+<!-- generated:power-roles:end -->
 
 - **Levels** are those USB defines: without PD, USB default (USB 3.x: 150 mA unconfigured, 900 mA configured; USB 2.0 only: 100 / 500 mA) and Type-C Current 1.5 A and 3.0 A at 5 V; with PD, any Standard Power Range contract up to 3.0 A. BC 1.2 is not part of the interface.
 - A device offers on `CC` only what it can supply at that moment, and accepts only what its input path is rated for. A HAT never draws more than its contract. A HAT that needs more than a device offers declares its need in its identity record (§7), and Blackbird OS says clearly what it cannot power (T1-045: never silent).
@@ -167,10 +167,14 @@ Common classes:
 
 Positions are given looking at the pogo tips on the device-side piece: row A nearest the flat-cable tail, row B beside it; columns 1 to 10. The HAT pad map is the mirror image of this table. Every position uses the same pogo part (HCS-006), at **2.54 mm**: the **Mill-Max 0965** (primary) or the **Harwin P70** (alternate) on the same HAT pads (ADR 0004 and its amendment). Contact span 22.86 × 2.54 mm. 20 is the fewest contacts that meet §4 and §5.1; a 2 × 8 field does not hold them (ADR 0004 amendment).
 
+<!-- generated:pogo-field:start -->
+
 | Col | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 |
 |---|---|---|---|---|---|---|---|---|---|---|
 | **Row A** | GND | SSTX+ | SSTX− | GND | SSRX+ | SSRX− | GND | D+ | D− | GND |
 | **Row B** | VBUS | GND | VBUS | GND | VBUS | GND | VBUS | GND | GND | CC |
+
+<!-- generated:pogo-field:end -->
 
 Layout rules:
 

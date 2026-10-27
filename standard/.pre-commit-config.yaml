@@ -34,3 +34,18 @@ repos:
         language: system
         pass_filenames: false
         files: ^docs/requirements/
+      # The interface v2 tables are generated from interfaces/hat-v2/ and checked; the generator is tested.
+      - id: hat-interface-current
+        name: interface v2 tables generated (tools/hat_interface.py render --check)
+        entry: python tools/hat_interface.py render --check
+        language: python
+        additional_dependencies: ["jsonschema==4.23.0"]
+        pass_filenames: false
+        files: ^(interfaces/|tools/|docs/specs/interface-v2\.md$)
+      - id: hat-interface-tests
+        name: hat_interface tests (pytest)
+        entry: pytest -q tests
+        language: python
+        additional_dependencies: ["jsonschema==4.23.0", "pytest==8.3.3"]
+        pass_filenames: false
+        files: ^(interfaces/|tools/|tests/|docs/specs/interface-v2\.md$)
