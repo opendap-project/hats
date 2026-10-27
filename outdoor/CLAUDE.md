@@ -11,4 +11,4 @@ Contributor rules (English, confirmed information only, REUSE licensing, the `do
 ## Working here
 
 - Requirements are edited in `docs/requirements/requirements.toml`; `docs/requirements/README.md` is rendered from it with `odapkit req render` and never edited by hand.
-- This HAT mounts through the [HAT Case Standard](https://github.com/opendap-project/hat-standard); follow it instead of redefining the interface here.
+- This HAT mounts through the [OpenDAP HAT Standard](https://github.com/opendap-project/hat-standard); follow it instead of redefining the interface here.

@@ -6,7 +6,7 @@ Requirements for this project.
 |---|---|---|---|
 | OUT-001 | This HAT is a complete project: hardware, case, firmware, software, Blackbird OS package and its own tooling. | must | Draft |
 | OUT-002 | Its Blackbird OS software shall be a custom implementation built on popular open-source software for its domain, optimized for this HAT and the board. | must | Draft |
-| OUT-003 | It shall mount through the HAT Case Standard. | must | Draft |
+| OUT-003 | It shall mount through the OpenDAP HAT Standard. | must | Draft |
 | OUT-004 | It may include on-board AI features. | should | Draft |
 | OUT-005 | The HAT shall extend the device for use beyond infrastructure: two-way satellite messaging with an emergency SOS, multi-band GNSS (at least L1 and L5), LoRa mesh messaging, and its own battery that powers the HAT and charges the device. | must | Draft |
 | OUT-006 | The HAT shall reach the device only through its USB port and meet the minimum conditions of [hat-standard interface v2](https://github.com/opendap-project/hat-standard/blob/main/docs/specs/interface-v2.md) (HCS-027 to HCS-031). | must | Draft |

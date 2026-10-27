@@ -16,7 +16,7 @@ priority = "must"
 status = "draft"
 [[block.requirement]]
 id = "OUT-003"
-text = "It shall mount through the HAT Case Standard."
+text = "It shall mount through the OpenDAP HAT Standard."
 priority = "must"
 status = "draft"
 [[block.requirement]]
