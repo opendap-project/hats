@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/opendap-project/hat-standard/blob/main/interfaces/hat-v2/identity.schema.json",
+  "$id": "https://github.com/opendap-project/hats/blob/main/standard/interfaces/hat-v2/identity.schema.json",
   "title": "opendap.hat-identity/v1: the fields of the OpenDAP HAT identity record (interface v2 §7), as a HAT maker declares them",
   "description": "The record's content only. Its byte layout, the capability UUID, the vendor request indexes and the hash algorithm are open (interface v2 §11), so the hash and the signature are kept as the maker's text and not constrained further.",
   "type": "object",

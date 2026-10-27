@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/opendap-project/hat-standard/blob/main/interfaces/hat-v2/power.schema.json",
+  "$id": "https://github.com/opendap-project/hats/blob/main/standard/interfaces/hat-v2/power.schema.json",
   "title": "opendap.hat-power/v1: the HAT interface v2 power rails, contact ratings and power roles",
   "type": "object",
   "additionalProperties": false,

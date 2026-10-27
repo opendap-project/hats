@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/opendap-project/hat-standard/blob/main/interfaces/hat-v2/contacts.schema.json",
+  "$id": "https://github.com/opendap-project/hats/blob/main/standard/interfaces/hat-v2/contacts.schema.json",
   "title": "opendap.hat-contacts/v1: the HAT interface v2 contact field, its functions, electrical classes and pogo positions",
   "type": "object",
   "additionalProperties": false,
