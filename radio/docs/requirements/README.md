@@ -6,7 +6,7 @@ Requirements for this project.
 |---|---|---|---|
 | RAD-001 | This HAT is a complete project: hardware, case, firmware, software, Blackbird OS package and its own tooling. | must | Confirmed |
 | RAD-002 | Its Blackbird OS software shall be a custom implementation built on popular open-source software for its domain, optimized for this HAT and the board. | must | Confirmed |
-| RAD-003 | It shall mount through the HAT Case Standard. | must | Confirmed |
+| RAD-003 | It shall mount through the OpenDAP HAT Standard. | must | Confirmed |
 | RAD-004 | It may include on-board AI features. | should | Draft |
 | RAD-005 | The HAT shall be a software-defined radio based on HackRF Pro. | must | Confirmed |
 | RAD-006 | The HAT shall reach the device only through its USB port and meet the minimum conditions of [hat-standard interface v2](https://github.com/opendap-project/hat-standard/blob/main/docs/specs/interface-v2.md) (HCS-027 to HCS-031): standard USB classes, the identity capability, USB PD power rules, firmware recoverable over USB. | must | Draft |
