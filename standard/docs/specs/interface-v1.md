@@ -349,7 +349,7 @@ Expected use. The reference HATs' requirements name the HAT type only; the signa
 
 ## 11. Sources
 
-- HAT Case Standard requirements: [`../requirements/README.md`](../requirements/README.md); ADR [0001](../adr/0001-all-pogo-interface-with-fixed-device-side-piece.md), [0002](../adr/0002-interface-v1-native-high-speed-management-over-usb.md), [0003](../adr/0003-compatibility-levels.md), [0004](../adr/0004-pogo-part-and-field-geometry.md), [0005](../adr/0005-interface-v1-1-shared-extension-and-contact-reduction.md).
+- OpenDAP HAT Standard requirements: [`../requirements/README.md`](../requirements/README.md); ADR [0001](../adr/0001-all-pogo-interface-with-fixed-device-side-piece.md), [0002](../adr/0002-interface-v1-native-high-speed-management-over-usb.md), [0003](../adr/0003-compatibility-levels.md), [0004](../adr/0004-pogo-part-and-field-geometry.md), [0005](../adr/0005-interface-v1-1-shared-extension-and-contact-reduction.md).
 - [HAT interface v0](interface-v0.md) (superseded); v1.0 of this document (2026-10-22), in this repository's history.
 - Board repository: [pinout v1](https://github.com/opendap-project/board/blob/main/docs/specs/pinout-v1.md) (T1 mapping), [BOM v1](https://github.com/opendap-project/board/blob/main/docs/specs/bom-v1.md) (lines 65–70, 102), [power tree v0](https://github.com/opendap-project/board/blob/main/docs/specs/power-tree-v0.md) (§4.6, §4.10).
 - Parts library: `Hirose/DF40C-100DS-DP-0.4V.md` (DF40 catalog 2020: 0.3 A per contact, corner metal fittings, sizes), `Harwin/P70-1000045R.md` (drawing P70-10X0045R issue 4: 2.0 A, 0.88 N ± 0.29 N, Ø 2.20 mm pad).

@@ -249,7 +249,7 @@ Expected architecture. The reference HATs' requirements name the HAT type only; 
 
 ## 12. Sources
 
-- HAT Case Standard requirements: [`../requirements/README.md`](../requirements/README.md); ADR [0001](../adr/0001-all-pogo-interface-with-fixed-device-side-piece.md), [0004](../adr/0004-pogo-part-and-field-geometry.md), [0006](../adr/0006-hats-are-usb-only.md).
+- OpenDAP HAT Standard requirements: [`../requirements/README.md`](../requirements/README.md); ADR [0001](../adr/0001-all-pogo-interface-with-fixed-device-side-piece.md), [0004](../adr/0004-pogo-part-and-field-geometry.md), [0006](../adr/0006-hats-are-usb-only.md).
 - [HAT interface v1](interface-v1.md) (superseded, revision v1.1).
 - USB 3.2, USB 2.0, USB Type-C Cable and Connector, and USB Power Delivery specifications (USB-IF): current advertisement (Default, 1.5 A, 3.0 A), vSafe0V and vSafe5V, attach debounce, power and data role swaps, BOS descriptors and the PLATFORM capability type.
 - Board repository: [BOM v1](https://github.com/opendap-project/board/blob/main/docs/specs/bom-v1.md), [power tree v0](https://github.com/opendap-project/board/blob/main/docs/specs/power-tree-v0.md) (§4.6, §4.7).

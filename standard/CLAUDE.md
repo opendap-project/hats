@@ -1,6 +1,6 @@
-# HAT Case Standard
+# OpenDAP HAT Standard
 
-The HAT Case Standard: device side and accessory side. A HAT swaps the basic back cover for a HAT case; this standard defines that rear interface (mechanics, pinout, electrical, power and identification over USB), plus reference designs and a compliance kit for accessory developers.
+The OpenDAP HAT Standard: the interface between the T1 and its HATs, device side and accessory side. A HAT swaps the basic back cover for a HAT case; this standard defines that rear interface (mechanics, pinout, electrical, power and identification over USB), plus reference designs and a compliance kit for accessory developers.
 
 <!-- >>> odapkit sync: managed block from the workspace templates; edit them, not this block -->
 Part of [OpenDAP](https://github.com/opendap-project). This repository is Open Source.

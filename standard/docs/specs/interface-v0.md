@@ -162,6 +162,6 @@ The grid, pitch, contact positions and keying of the pogo field on the device-si
 
 ## 8. Sources
 
-- HAT Case Standard requirements: [`../requirements/README.md`](../requirements/README.md).
+- OpenDAP HAT Standard requirements: [`../requirements/README.md`](../requirements/README.md).
 - Hirose DF40 catalog (May 2020) and drawing EDC3-311351-00, through the parts library sheets `Hirose/DF40C-100DS-DP-0.4V.md` and `Hirose/DF40C-30DS-DP-0.4V.md` (the 50-contact size uses the same catalog ratings).
 - Board BOM v1.2 (line 66) and power tree v0 (§4.6), board repository.

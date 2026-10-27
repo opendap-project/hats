@@ -1,6 +1,6 @@
-# HAT Case Standard requirements
+# OpenDAP HAT Standard requirements
 
-Requirements for the HAT Case Standard.
+Requirements for the OpenDAP HAT Standard.
 
 | ID | Requirement | Priority | Status |
 |---|---|---|---|
@@ -51,7 +51,7 @@ Requirements for the HAT Case Standard.
 - HCS-026: contacts were already reduced through the compatibility levels and pin reuse, yet the design still used too many in places; the base is USB 3, and the extension is PCIe or CSI-2 on the same reused high-speed contacts, selected by declared function (DSI out is not part of it). They also clarified board BRD-042: a standard high-speed switch is acceptable if it does not limit the link and uses standard parts and protocols. Result: [ADR 0005](../adr/0005-interface-v1-1-shared-extension-and-contact-reduction.md): 100 → 68 pogo contacts (L1 29, L2 45, L3 68 cumulative), one DF40 100 per cable end instead of a 100 and a 50, line out removed, SWD as a GPIO alternate.
 - HCS-007 requires an on-board EEPROM; the dedicated ID bus comes from ADR 0002 item 2. ADR 0005 keeps it: moving the EEPROM onto the general I2C would save two contacts but make the identity read, which gates `HAT_5V`, depend on every third-party device on that bus.
 - The flat cable from the board to the device-side piece is specified by the `board` repository.
-- The device-side piece goes wherever it fits best inside the T1. The HAT Case Standard is defined once the rest of the device is settled.
+- The device-side piece goes wherever it fits best inside the T1. The OpenDAP HAT Standard is defined once the rest of the device is settled.
 - HCS-027 to HCS-030: HATs are USB only; the connector carries only what USB defines, with identity in USB descriptors, presence as attach and wake as remote wakeup; charging and voltage management follow USB Power Delivery, so CC is part of the connector. Result: [ADR 0006](../adr/0006-hats-are-usb-only.md) and [interface v2](../specs/interface-v2.md): 68 → 20 pogo contacts. Withdrawn the same day: HCS-007, HCS-015, HCS-017, HCS-022, HCS-025, HCS-026. HCS-013 stands: HAT chips are flashed, operated and debugged over USB. HCS-024 stands; its example (an identity layout readable by HAT+ tools) no longer applies, as there is no EEPROM. HCS-031 (Draft) records the minimum conditions of interface v2 §8.
 - HCS-006, HCS-014 ([RFC 0015](https://github.com/opendap-project/rfcs/blob/main/text/0015-hat-connector-pogo-field-and-usb-c-port-hat.md)): the pogo field stays the HAT connector of interface v2 ([ADR 0001](../adr/0001-all-pogo-interface-with-fixed-device-side-piece.md) confirmed); the Mill-Max 0965 becomes the primary pogo part and the Harwin P70 the alternate ([ADR 0004](../adr/0004-pogo-part-and-field-geometry.md) amendment). A USB-C port is offered as a reference HAT, the USB-C port HAT ([reference designs](../../reference-designs/README.md)), also the prototyping path for HAT makers (HCS-002).
 - HCS-032: three back closures exist: the basic back cover (no device-side piece, HCS-023), the blank HAT case (device-side piece fitted, no HAT) and a hardware HAT in its HAT case (HCS-003).
