@@ -9,7 +9,7 @@ Requirements for this project.
 | CAM-003 | It shall mount through the OpenDAP HAT Standard. | must | Confirmed |
 | CAM-004 | It may include on-board AI features. | should | Draft |
 | CAM-005 | The HAT shall turn the device into an action camera. | must | Confirmed |
-| CAM-006 | The HAT shall reach the device only through its USB port and meet the minimum conditions of [hat-standard interface v2](../../../standard/docs/specs/interface-v2.md) (HCS-027 to HCS-031): standard USB classes, the identity capability, USB PD power rules, firmware recoverable over USB. | must | Draft |
+| CAM-006 | The HAT shall reach the device only through its USB port and meet the minimum conditions of [hat-standard interface v2](https://github.com/opendap-project/hats/blob/main/standard/docs/specs/interface-v2.md) (HCS-027 to HCS-031): standard USB classes, the identity capability, USB PD power rules, firmware recoverable over USB. | must | Draft |
 | CAM-007 | The HAT shall carry its own image processing and present video as UVC: an ISP for uncompressed video within a USB 3 Gen 1 link, and an encoder for modes beyond it. On-board AI (CAM-004) runs on the HAT. | must | Draft |
 | CAM-008 | The HAT shall record video at 3840 × 2160 and at least 60 fps, in H.265 and H.264, to storage on the HAT. | must | Draft |
 | CAM-009 | While recording, the HAT shall send the device a live preview as uncompressed UVC video, with its audio and stabilisation data, so the device is its viewfinder and controller. | must | Draft |

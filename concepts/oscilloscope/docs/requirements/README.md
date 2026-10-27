@@ -9,5 +9,5 @@ Requirements for this project.
 | OSC-003 | It shall mount through the OpenDAP HAT Standard. | must | Confirmed |
 | OSC-004 | It may include on-board AI features. | should | Draft |
 | OSC-005 | The HAT shall be an oscilloscope based on the DS212. | must | Confirmed |
-| OSC-006 | The HAT shall reach the device only through its USB port and meet the minimum conditions of [hat-standard interface v2](../../../../standard/docs/specs/interface-v2.md) (HCS-027 to HCS-031): standard USB classes, the identity capability, USB PD power rules, firmware recoverable over USB. | must | Draft |
+| OSC-006 | The HAT shall reach the device only through its USB port and meet the minimum conditions of [hat-standard interface v2](https://github.com/opendap-project/hats/blob/main/standard/docs/specs/interface-v2.md) (HCS-027 to HCS-031): standard USB classes, the identity capability, USB PD power rules, firmware recoverable over USB. | must | Draft |
 | OSC-007 | The HAT shall stream samples over High-Speed USB from its own MCU or FPGA. | must | Draft |

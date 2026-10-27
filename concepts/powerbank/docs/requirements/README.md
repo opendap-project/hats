@@ -9,5 +9,5 @@ Requirements for this project.
 | PWR-003 | It shall mount through the OpenDAP HAT Standard. | must | Confirmed |
 | PWR-004 | It may include on-board AI features. | should | Draft |
 | PWR-005 | The HAT shall work as a powerbank. | must | Confirmed |
-| PWR-006 | The HAT shall reach the device only through its USB port and meet the minimum conditions of [hat-standard interface v2](../../../../standard/docs/specs/interface-v2.md) (HCS-027 to HCS-031): standard USB classes, the identity capability, USB PD power rules, firmware recoverable over USB. | must | Draft |
+| PWR-006 | The HAT shall reach the device only through its USB port and meet the minimum conditions of [hat-standard interface v2](https://github.com/opendap-project/hats/blob/main/standard/docs/specs/interface-v2.md) (HCS-027 to HCS-031): standard USB classes, the identity capability, USB PD power rules, firmware recoverable over USB. | must | Draft |
 | PWR-007 | The HAT shall be a USB PD source or dual-role HAT, report its battery over PD, and keep the device as USB host. | must | Draft |

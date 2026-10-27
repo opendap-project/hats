@@ -1,0 +1,99 @@
+# Local checks for every commit. Install once per clone: pre-commit install
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: check-merge-conflict
+      - id: check-case-conflict
+      - id: check-yaml
+      - id: check-toml
+      - id: check-json
+      - id: check-added-large-files
+        args: ["--maxkb=5120"]
+  - repo: https://github.com/fsfe/reuse-tool
+    rev: v6.2.0
+    hooks:
+      - id: reuse
+  - repo: https://github.com/opendap-project/toolkit-hooks
+    rev: v0.4.1
+    hooks:
+      - id: no-stray-files
+      - id: kicad-erc
+      - id: kicad-drc
+      - id: no-fab-outputs
+  - repo: https://github.com/DavidAnson/markdownlint-cli2
+    rev: v0.24.0
+    hooks:
+      - id: markdownlint-cli2
+  # The requirements README is rendered from requirements.toml and checked.
+  - repo: local
+    hooks:
+      # The interface v2 tables are generated from standard/interfaces/hat-v2/ and checked; the generator is tested.
+      - id: hat-interface-current
+        name: interface v2 tables generated (standard/tools/hat_interface.py render --check)
+        entry: sh -c 'cd standard && python tools/hat_interface.py render --check'
+        language: python
+        additional_dependencies: ["jsonschema==4.23.0"]
+        pass_filenames: false
+        files: ^standard/(interfaces/|tools/|docs/specs/interface-v2\.md$)
+      - id: hat-interface-tests
+        name: hat_interface tests (pytest)
+        entry: sh -c 'cd standard && pytest -q tests'
+        language: python
+        additional_dependencies: ["jsonschema==4.23.0", "pytest==8.3.3"]
+        pass_filenames: false
+        files: ^standard/(interfaces/|tools/|tests/|docs/specs/interface-v2\.md$)
+      - id: requirements-current-standard
+        name: standard requirements README rendered (odapkit req render --check)
+        entry: odapkit req render standard/docs/requirements/requirements.toml --check
+        language: system
+        pass_filenames: false
+        files: ^standard/docs/requirements/
+      - id: requirements-current-radio
+        name: radio requirements README rendered (odapkit req render --check)
+        entry: odapkit req render radio/docs/requirements/requirements.toml --check
+        language: system
+        pass_filenames: false
+        files: ^radio/docs/requirements/
+      - id: requirements-current-camera
+        name: camera requirements README rendered (odapkit req render --check)
+        entry: odapkit req render camera/docs/requirements/requirements.toml --check
+        language: system
+        pass_filenames: false
+        files: ^camera/docs/requirements/
+      - id: requirements-current-outdoor
+        name: outdoor requirements README rendered (odapkit req render --check)
+        entry: odapkit req render outdoor/docs/requirements/requirements.toml --check
+        language: system
+        pass_filenames: false
+        files: ^outdoor/docs/requirements/
+      - id: requirements-current-nas
+        name: concepts/nas requirements README rendered (odapkit req render --check)
+        entry: odapkit req render concepts/nas/docs/requirements/requirements.toml --check
+        language: system
+        pass_filenames: false
+        files: ^concepts/nas/docs/requirements/
+      - id: requirements-current-oscilloscope
+        name: concepts/oscilloscope requirements README rendered (odapkit req render --check)
+        entry: odapkit req render concepts/oscilloscope/docs/requirements/requirements.toml --check
+        language: system
+        pass_filenames: false
+        files: ^concepts/oscilloscope/docs/requirements/
+      - id: requirements-current-powerbank
+        name: concepts/powerbank requirements README rendered (odapkit req render --check)
+        entry: odapkit req render concepts/powerbank/docs/requirements/requirements.toml --check
+        language: system
+        pass_filenames: false
+        files: ^concepts/powerbank/docs/requirements/
+      - id: requirements-current-recorder
+        name: concepts/recorder requirements README rendered (odapkit req render --check)
+        entry: odapkit req render concepts/recorder/docs/requirements/requirements.toml --check
+        language: system
+        pass_filenames: false
+        files: ^concepts/recorder/docs/requirements/
+      - id: requirements-current-vna
+        name: concepts/vna requirements README rendered (odapkit req render --check)
+        entry: odapkit req render concepts/vna/docs/requirements/requirements.toml --check
+        language: system
+        pass_filenames: false
+        files: ^concepts/vna/docs/requirements/
