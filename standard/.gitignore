@@ -3,6 +3,13 @@
 .claude/settings.local.json
 # Generated trees kept out of indexers (odapkit noindex): the renamed trees and their symlinks
 *.noindex
+
+# Python
+__pycache__/
+.venv
+.pytest_cache
+.ruff_cache
+.mypy_cache
 # <<< odapkit sync
 
 # FreeCAD
@@ -16,7 +23,3 @@ _autosave-*
 *.lck
 ~*.lck
 fab/
-
-# Python
-__pycache__/
-.pytest_cache/
