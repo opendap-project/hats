@@ -1,0 +1,9 @@
+{
+  "schema": "opendap.hat-identity/v1",
+  "id": "org.example.hat-camera",
+  "interface_revision": 2,
+  "power_role": "sink",
+  "power_need": "1.5 A at 5 V",
+  "manifest_hash": "example-hash",
+  "signature": "example-signature"
+}

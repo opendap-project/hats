@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/opendap-project/hat-standard/blob/main/interfaces/hat-v2/identity.schema.json",
+  "title": "opendap.hat-identity/v1: the fields of the OpenDAP HAT identity record (interface v2 §7), as a HAT maker declares them",
+  "description": "The record's content only. Its byte layout, the capability UUID, the vendor request indexes and the hash algorithm are open (interface v2 §11), so the hash and the signature are kept as the maker's text and not constrained further.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "id",
+    "interface_revision",
+    "power_role",
+    "power_need",
+    "manifest_hash",
+    "signature"
+  ],
+  "properties": {
+    "schema": {
+      "const": "opendap.hat-identity/v1"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)+$",
+      "description": "the HAT's reverse-domain ID; there is no registry (HCS-008)"
+    },
+    "interface_revision": {
+      "const": 2
+    },
+    "power_role": {
+      "enum": [
+        "sink",
+        "source",
+        "dual-role"
+      ],
+      "description": "interface v2 §5.2"
+    },
+    "power_need": {
+      "description": "the power the HAT needs (interface v2 §5.2); its encoding is open (§11)"
+    },
+    "manifest_hash": {
+      "type": "string",
+      "minLength": 1,
+      "description": "the hash of the HAT's capability manifest (HCS-009, HCS-011)"
+    },
+    "signature": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Ed25519 signature over the record (HCS-010)"
+    }
+  }
+}

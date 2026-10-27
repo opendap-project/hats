@@ -1,0 +1,8 @@
+| Function | Signals (direction) | Pogo contacts | Electrical class | Notes |
+|---|---|---|---|---|
+| SuperSpeed | `SSTX±` (out), `SSRX±` (in) | 4 (2 pairs) | USB 3 SuperSpeed, 90 Ω differential | TX AC-coupling capacitors on the transmitting side (device for `SSTX`, HAT for `SSRX`) |
+| USB 2.0 | `D±` | 2 (1 pair) | USB 2.0, 90 Ω differential | The USB 2.0 half of the same port |
+| Configuration channel | `CC` | 1 | USB Type-C CC, USB PD | Required: power follows USB PD (§5). One CC: the field is keyed and never flipped. No VCONN, no SBU (§6) |
+| Power | `VBUS` | 4 | 5 V | §5 |
+| Ground | `GND` | 9 | — | 4 power returns, 4 pair fence, 1 guard; one net |
+| **Total** | | **20** | | |

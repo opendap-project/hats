@@ -1,0 +1,89 @@
+schema = "opendap.requirements/v1"
+
+[[block]]
+markdown = "# Radio HAT requirements\n\nRequirements for this project.\n"
+
+[[block]]
+[[block.requirement]]
+id = "RAD-001"
+text = "This HAT is a complete project: hardware, case, firmware, software, Blackbird OS package and its own tooling."
+priority = "must"
+status = "confirmed"
+[[block.requirement]]
+id = "RAD-002"
+text = "Its Blackbird OS software shall be a custom implementation built on popular open-source software for its domain, optimized for this HAT and the board."
+priority = "must"
+status = "confirmed"
+[[block.requirement]]
+id = "RAD-003"
+text = "It shall mount through the OpenDAP HAT Standard."
+priority = "must"
+status = "confirmed"
+[[block.requirement]]
+id = "RAD-004"
+text = "It may include on-board AI features."
+priority = "should"
+status = "draft"
+[[block.requirement]]
+id = "RAD-005"
+text = "The HAT shall be a software-defined radio based on HackRF Pro."
+priority = "must"
+status = "confirmed"
+[[block.requirement]]
+id = "RAD-006"
+text = "The HAT shall reach the device only through its USB port and meet the minimum conditions of [hat-standard interface v2](https://github.com/opendap-project/hat-standard/blob/main/docs/specs/interface-v2.md) (HCS-027 to HCS-031): standard USB classes, the identity capability, USB PD power rules, firmware recoverable over USB."
+priority = "must"
+status = "draft"
+[[block.requirement]]
+id = "RAD-007"
+text = "The HAT shall stream over High-Speed USB 2.0, as its HackRF Pro base does; the SuperSpeed pads of the interface are left unconnected."
+priority = "must"
+status = "draft"
+[[block.requirement]]
+id = "RAD-008"
+text = "The HAT targets radio and RF security research: software-defined radio, sub-GHz capture and replay, and RFID/NFC research (reading, emulation and cloning at LF 125 kHz and HF 13.56 MHz)."
+priority = "must"
+status = "draft"
+[[block.requirement]]
+id = "RAD-009"
+text = "The HAT's SDR shall cover 100 kHz–6 GHz operating frequency at up to 20 Msps, as the HackRF Pro base provides, on a 50 Ω SMA port."
+priority = "must"
+status = "draft"
+[[block.requirement]]
+id = "RAD-010"
+text = "Functions beyond the SDR (sub-GHz transceiver, RFID/NFC tool, LoRa) shall reach the device as additional USB functions behind an on-HAT USB hub, each with a mainline Linux or open-source host driver (SoapySDR/`hackrf`, CDC-ACM, HID)."
+priority = "must"
+status = "draft"
+[[block.requirement]]
+id = "RAD-011"
+text = "The HAT shall be receive-only by default. Any transmission shall require an explicit, logged user action and an on-screen notice of the user's licence and spectrum-law responsibility; Blackbird OS shall show the active region's applicable limits."
+priority = "must"
+status = "draft"
+[[block.requirement]]
+id = "RAD-012"
+text = "The HAT shall carry its own radio and RF-exposure compliance as a separate product with its own declaration of conformity; it shall not be placed on the market as a single combined product with the device."
+priority = "must"
+status = "draft"
+[[block.requirement]]
+id = "RAD-013"
+text = "The HAT should define a receive-only hardware variant (transmit path depopulated) as a population option, for markets where a transmit-capable variant has no certification path."
+priority = "should"
+status = "draft"
+[[block.requirement]]
+id = "RAD-014"
+text = "The HAT shall operate within the device's 5 V HAT power budget (≤ 1.5 A from the T1) without its own battery; lower rails are regulated on the HAT."
+priority = "must"
+status = "draft"
+[[block.requirement]]
+id = "RAD-015"
+text = "The HAT's RFID/NFC research function should be distinct from, and not replace, the device's own NFC reader; the device's NFC remains its tap-to-pair and hand-off reader."
+priority = "should"
+status = "draft"
+[[block.requirement]]
+id = "RAD-016"
+text = "LoRa/Meshtastic messaging is a secondary function of this HAT and, where fitted, should use a pre-certified radio module."
+priority = "should"
+status = "draft"
+
+[[block]]
+markdown = "\n## Context\n\n- RAD-007 to RAD-016: recorded as **Draft**. RAD-007 amended the same day: the HackRF Pro (Great Scott Gadgets) is a High-Speed USB 2.0 design, so the SuperSpeed pads of [interface v2](https://github.com/opendap-project/hat-standard/blob/main/docs/specs/interface-v2.md) stay unconnected.\n- RAD-009: the HackRF Pro operates from 100 kHz to 6 GHz at 20 Msps with 8-bit I/Q samples (Great Scott Gadgets HackRF Pro documentation). 20 Msps × 2 bytes is 320 Mb/s, inside High-Speed USB 2.0. Its hardware is licensed CERN-OHL-P-2.0 and its software GPL (OSHWA certification US002820).\n- RAD-010: a USB 2.0 hub keeps the SDR on its own `hackrf` driver and lets each device recover its firmware over USB on its own (HCS-031).\n- RAD-011, RAD-012: a wideband transmitter from 1 MHz to 6 GHz has no consumer certification route under US Part 15, the EU Radio Equipment Directive or the Japan Radio Act. The EU Radio Equipment Directive also covers receive-only radio equipment. Showing a region's spectrum limits is a legal limit made visible, not a capability lock (BRD-049).\n- RAD-013: whether the transmit path of a HackRF-derived half-duplex chain can be depopulated is **UNVERIFIED**; it is checked at schematic capture.\n- RAD-014: interface v2 gives a HAT 5 V at up to 1.5 A from the T1. The HAT's whole-board power draw is **UNVERIFIED** until it is measured on the first prototype.\n- RAD-015: the device's NFC reader is a fixed-function reader for tap-to-pair and hand-off; the HAT's tool adds low-level access for research (sniffing, emulation, cloning) at LF and HF.\n"

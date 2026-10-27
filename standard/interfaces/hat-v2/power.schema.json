@@ -1,0 +1,174 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/opendap-project/hat-standard/blob/main/interfaces/hat-v2/power.schema.json",
+  "title": "opendap.hat-power/v1: the HAT interface v2 power rails, contact ratings and power roles",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "interface",
+    "revision",
+    "status",
+    "rail",
+    "contact",
+    "role"
+  ],
+  "properties": {
+    "schema": {
+      "const": "opendap.hat-power/v1"
+    },
+    "interface": {
+      "const": "hat-v2"
+    },
+    "revision": {
+      "type": "string",
+      "pattern": "^2\\.[0-9]+$"
+    },
+    "status": {
+      "enum": [
+        "draft",
+        "accepted",
+        "superseded",
+        "withdrawn"
+      ]
+    },
+    "rail": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "direction",
+          "rating_a",
+          "fault_ceiling_a",
+          "pogo_contacts"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "role": {
+            "type": "string",
+            "minLength": 1
+          },
+          "voltage": {
+            "type": "string",
+            "minLength": 1
+          },
+          "direction": {
+            "type": "string",
+            "minLength": 1
+          },
+          "rating_a": {
+            "type": "number",
+            "exclusiveMinimum": 0
+          },
+          "rating_note": {
+            "type": "string",
+            "minLength": 1
+          },
+          "fault_ceiling_a": {
+            "type": "number",
+            "exclusiveMinimum": 0
+          },
+          "pogo_contacts": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "pogo_contacts_extra": {
+            "type": "string",
+            "minLength": 1
+          },
+          "t1_flat_cable_contacts": {
+            "type": "integer",
+            "minimum": 1,
+            "description": "contacts on the T1's flat cable (DF40C-50), device-specific"
+          },
+          "t1_flat_cable_contacts_extra": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "contact": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "rating_a",
+          "rails",
+          "contacts_per_rail",
+          "one_contact_open"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "rating_a": {
+            "type": "number",
+            "exclusiveMinimum": 0
+          },
+          "rating_note": {
+            "type": "string",
+            "minLength": 1
+          },
+          "rails": {
+            "type": "string",
+            "minLength": 1
+          },
+          "contacts_per_rail": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "one_contact_open": {
+            "type": "boolean",
+            "description": "whether the margin is also checked with one contact of the rail open"
+          }
+        }
+      }
+    },
+    "role": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "name",
+          "does",
+          "negotiation"
+        ],
+        "properties": {
+          "id": {
+            "enum": [
+              "sink",
+              "source",
+              "dual-role"
+            ]
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "does": {
+            "type": "string",
+            "minLength": 1
+          },
+          "negotiation": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    }
+  }
+}

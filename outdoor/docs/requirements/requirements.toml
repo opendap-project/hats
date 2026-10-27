@@ -1,0 +1,84 @@
+schema = "opendap.requirements/v1"
+
+[[block]]
+markdown = "# Outdoor HAT requirements\n\nRequirements for this project.\n"
+
+[[block]]
+[[block.requirement]]
+id = "OUT-001"
+text = "This HAT is a complete project: hardware, case, firmware, software, Blackbird OS package and its own tooling."
+priority = "must"
+status = "draft"
+[[block.requirement]]
+id = "OUT-002"
+text = "Its Blackbird OS software shall be a custom implementation built on popular open-source software for its domain, optimized for this HAT and the board."
+priority = "must"
+status = "draft"
+[[block.requirement]]
+id = "OUT-003"
+text = "It shall mount through the OpenDAP HAT Standard."
+priority = "must"
+status = "draft"
+[[block.requirement]]
+id = "OUT-004"
+text = "It may include on-board AI features."
+priority = "should"
+status = "draft"
+[[block.requirement]]
+id = "OUT-005"
+text = "The HAT shall extend the device for use beyond infrastructure: two-way satellite messaging with an emergency SOS, multi-band GNSS (at least L1 and L5), LoRa mesh messaging, and its own battery that powers the HAT and charges the device."
+priority = "must"
+status = "draft"
+[[block.requirement]]
+id = "OUT-006"
+text = "The HAT shall reach the device only through its USB port and meet the minimum conditions of [hat-standard interface v2](https://github.com/opendap-project/hat-standard/blob/main/docs/specs/interface-v2.md) (HCS-027 to HCS-031)."
+priority = "must"
+status = "draft"
+[[block.requirement]]
+id = "OUT-007"
+text = "The HAT shall be a dual-role USB PD HAT that sources the device within its input capability, reports its battery over PD, powers its own radios from its own battery, and keeps the device as USB host."
+priority = "must"
+status = "draft"
+[[block.requirement]]
+id = "OUT-008"
+text = "The emergency SOS shall work from the HAT alone, with the device asleep, off or without software running: its own button, position, satellite link and battery."
+priority = "must"
+status = "draft"
+[[block.requirement]]
+id = "OUT-009"
+text = "Mesh messaging, position logging and the satellite message queue shall keep running while the device sleeps."
+priority = "must"
+status = "draft"
+[[block.requirement]]
+id = "OUT-010"
+text = "The HAT should offer cellular connectivity (5G with LTE fallback, SMS, voice and eSIM) as a population option on a socket that every unit carries."
+priority = "should"
+status = "draft"
+[[block.requirement]]
+id = "OUT-011"
+text = "The HAT should carry a barometric altimeter, a magnetometer and a flashlight."
+priority = "should"
+status = "draft"
+[[block.requirement]]
+id = "OUT-012"
+text = "The HAT shall be charged through its own USB-C receptacle, including from solar panels, and shall be able to power another USB-C device."
+priority = "must"
+status = "draft"
+[[block.requirement]]
+id = "OUT-013"
+text = "The HAT case should reach IP67."
+priority = "should"
+status = "draft"
+[[block.requirement]]
+id = "OUT-014"
+text = "The HAT battery shall be a standard commercial cell, replaceable by the user with common tools, with a published pack specification."
+priority = "must"
+status = "draft"
+[[block.requirement]]
+id = "OUT-015"
+text = "Every transmitter shall follow the device's certification rules for each certified variant (t1 T1-077): no transmitter without a grant for its declared markets, RF exposure tested as a body-worn device together with the device, and every power or duty limit documented and visible."
+priority = "must"
+status = "draft"
+
+[[block]]
+markdown = "\n## Context\n\n- OUT-001 to OUT-015: recorded as **Draft** when the repository was created ([RFC 0016](https://github.com/opendap-project/rfcs/blob/main/text/0016-outdoor-hat.md)).\n- OUT-007: the HAT runs its radios from its own battery because a satellite transmit peak exceeds what the device offers a HAT: 5 V at up to 1.5 A ([interface v2](https://github.com/opendap-project/hat-standard/blob/main/docs/specs/interface-v2.md) §5.2). The T1 accepts only 5 V from a HAT.\n- OUT-005: GNSS and satellite messaging are on a HAT because the T1 body has no room for another antenna next to its own ([board ADR 0018](https://github.com/opendap-project/board/blob/main/docs/adr/0018-antennas-and-certification-route.md)).\n- OUT-009: LoRa mesh lives on this HAT, on its own microcontroller and battery, because it has to keep relaying while the device sleeps.\n- OUT-010: cellular serves only where coverage exists; the module is fitted as a population option (board BRD-053) on a socket that every unit carries.\n- OUT-013: the rating of the device with this HAT is the lower of the two; the HAT cannot raise the T1's own rating (T1-017).\n"

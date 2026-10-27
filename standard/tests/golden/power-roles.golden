@@ -1,0 +1,5 @@
+| HAT role | What it does | Negotiation |
+|---|---|---|
+| **Sink** | Draws power from the device | Type-C current (Default, 1.5 A, 3.0 A at 5 V) or a PD contract the device offers |
+| **Source** | Powers or charges the device (for example a powerbank) | The HAT offers its PD source capabilities; the device takes a contract within its input capability |
+| **Dual-role** | Either, as agreed (for example a HAT with its own battery) | PD power role swap |

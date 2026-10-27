@@ -1,0 +1,49 @@
+schema = "opendap.requirements/v1"
+
+[[block]]
+markdown = "# NAS HAT requirements\n\nRequirements for this project.\n"
+
+[[block]]
+[[block.requirement]]
+id = "NAS-001"
+text = "This HAT is a complete project: hardware, case, firmware, software, Blackbird OS package and its own tooling."
+priority = "must"
+status = "confirmed"
+[[block.requirement]]
+id = "NAS-002"
+text = "Its Blackbird OS software shall be a custom implementation built on popular open-source software for its domain, optimized for this HAT and the board."
+priority = "must"
+status = "confirmed"
+[[block.requirement]]
+id = "NAS-003"
+text = "It shall mount through the OpenDAP HAT Standard."
+priority = "must"
+status = "confirmed"
+[[block.requirement]]
+id = "NAS-004"
+text = "It may include on-board AI features."
+priority = "should"
+status = "draft"
+[[block.requirement]]
+id = "NAS-005"
+text = "The HAT shall provide SSD storage."
+priority = "must"
+status = "confirmed"
+[[block.requirement]]
+id = "NAS-006"
+text = "The HAT shall provide Ethernet ports."
+priority = "must"
+status = "confirmed"
+[[block.requirement]]
+id = "NAS-007"
+text = "The HAT shall reach the device only through its USB port and meet the minimum conditions of [hat-standard interface v2](https://github.com/opendap-project/hat-standard/blob/main/docs/specs/interface-v2.md) (HCS-027 to HCS-031): standard USB classes, the identity capability, USB PD power rules, firmware recoverable over USB."
+priority = "must"
+status = "draft"
+[[block.requirement]]
+id = "NAS-008"
+text = "The HAT shall present its SSD as USB mass storage (UAS) and its Ethernet ports as USB network functions, behind a USB 3 hub."
+priority = "must"
+status = "draft"
+
+[[block]]
+markdown = ""

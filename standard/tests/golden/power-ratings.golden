@@ -1,0 +1,4 @@
+| Rail | Voltage | Direction | Interface rating (continuous) | Interface fault ceiling | Pogo contacts | DF40 contacts (T1) |
+|---|---|---|---|---|---|---|
+| `VBUS` | vSafe5V by default; a USB PD Standard Power Range voltage after a contract | out to a sink HAT, in from a source HAT | 3.0 A either direction, at any negotiated voltage | 4.5 A | 4 | 15 |
+| `GND` (power return) | — | return | 3.0 A | 4.5 A | 4 (+ 5 fence and guard) | 15 (+ 5 pair grounds) |
