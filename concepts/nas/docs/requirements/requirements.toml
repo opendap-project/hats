@@ -16,7 +16,7 @@ priority = "must"
 status = "confirmed"
 [[block.requirement]]
 id = "NAS-003"
-text = "It shall mount through the HAT Case Standard."
+text = "It shall mount through the OpenDAP HAT Standard."
 priority = "must"
 status = "confirmed"
 [[block.requirement]]
