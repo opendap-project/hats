@@ -1,0 +1,94 @@
+schema = "opendap.requirements/v1"
+
+[[block]]
+markdown = "# HUB HAT requirements\n\nRequirements for this project.\n"
+
+[[block]]
+[[block.requirement]]
+id = "HUB-001"
+text = "This HAT is a complete project: hardware, case, firmware, software, Blackbird OS package and its own tooling."
+priority = "must"
+status = "draft"
+[[block.requirement]]
+id = "HUB-002"
+text = "Its Blackbird OS software shall be a custom implementation built on popular open-source software for its domain, optimized for this HAT and the board."
+priority = "must"
+status = "draft"
+[[block.requirement]]
+id = "HUB-003"
+text = "It shall mount through the OpenDAP HAT Standard."
+priority = "must"
+status = "draft"
+[[block.requirement]]
+id = "HUB-004"
+text = "It may include on-board AI features."
+priority = "should"
+status = "draft"
+[[block.requirement]]
+id = "HUB-005"
+text = "The HAT shall be a media ingest hub for content professionals: it reads removable camera and recorder media and copies it to verified destinations without a computer."
+priority = "must"
+status = "draft"
+[[block.requirement]]
+id = "HUB-006"
+text = "The HAT shall reach the device only through its USB port and meet the minimum conditions of [hat-standard interface v2](https://github.com/opendap-project/hats/blob/main/standard/docs/specs/interface-v2.md) (HCS-027 to HCS-031): standard USB classes, the identity capability, USB PD power rules, firmware recoverable over USB."
+priority = "must"
+status = "draft"
+[[block.requirement]]
+id = "HUB-007"
+text = "The HAT shall use the device's SuperSpeed (USB 3 Gen 1) HAT link, with a USB 3 hub carrying its functions."
+priority = "must"
+status = "draft"
+[[block.requirement]]
+id = "HUB-008"
+text = "The HAT shall provide a full-size SD and a microSD slot, each UHS-II (SD 4.0) and backward compatible with UHS-I, presented to the device as USB mass storage through a mainline Linux driver."
+priority = "must"
+status = "draft"
+[[block.requirement]]
+id = "HUB-009"
+text = "The HAT shall provide a downstream USB-C host port (USB 3 Gen 1) for external drives, camera connections and other readers, powered within its USB 3 allocation."
+priority = "must"
+status = "draft"
+[[block.requirement]]
+id = "HUB-010"
+text = "The HAT should carry an internal M.2 2230 NVMe SSD as a copy destination, presented as USB mass storage (UAS)."
+priority = "should"
+status = "draft"
+[[block.requirement]]
+id = "HUB-011"
+text = "The HAT should provide a Gigabit Ethernet port through a mainline Linux driver."
+priority = "should"
+status = "draft"
+[[block.requirement]]
+id = "HUB-012"
+text = "The HAT should provide a USB-C power input (USB PD sink) that powers the HAT and its downstream port and charges the device at 5 V, per interface v2 §5.2."
+priority = "should"
+status = "draft"
+[[block.requirement]]
+id = "HUB-013"
+text = "Its software shall verify every copy by checksum, read back from each destination, and record the copy in an ASC MHL (version 2) hash list."
+priority = "must"
+status = "draft"
+[[block.requirement]]
+id = "HUB-014"
+text = "The HAT shall run a single-destination copy from a card within the device's 5 V HAT power budget (≤ 1.5 A from the T1) without its own battery; modes beyond that budget run only on its own power input. Its subsystems are power-gated per mode and its lower rails are regulated on the HAT."
+priority = "must"
+status = "draft"
+[[block.requirement]]
+id = "HUB-015"
+text = "Every programmable chip on the HAT shall be recoverable over USB with no working firmware (a ROM USB loader or a protected DFU bootloader), per HCS-031."
+priority = "must"
+status = "draft"
+[[block.requirement]]
+id = "HUB-016"
+text = "A CFexpress Type A slot should be a population option, fitted only where the measured card power and the enclosure's thermal limit allow it."
+priority = "should"
+status = "draft"
+[[block.requirement]]
+id = "HUB-017"
+text = "A 3G-SDI input, with video presented as USB Video Class and its embedded audio as USB Audio Class, should be a population option for monitoring, fitted only where the enclosure's thermal limit allows it."
+priority = "should"
+status = "draft"
+
+[[block]]
+markdown = ""

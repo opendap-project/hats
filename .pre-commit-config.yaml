@@ -67,6 +67,12 @@ repos:
         language: system
         pass_filenames: false
         files: ^outdoor/docs/requirements/
+      - id: requirements-current-hub
+        name: concepts/hub requirements README rendered (odapkit req render --check)
+        entry: odapkit req render concepts/hub/docs/requirements/requirements.toml --check
+        language: system
+        pass_filenames: false
+        files: ^concepts/hub/docs/requirements/
       - id: requirements-current-nas
         name: concepts/nas requirements README rendered (odapkit req render --check)
         entry: odapkit req render concepts/nas/docs/requirements/requirements.toml --check
@@ -97,3 +103,9 @@ repos:
         language: system
         pass_filenames: false
         files: ^concepts/vna/docs/requirements/
+      - id: requirements-current-wired
+        name: concepts/wired requirements README rendered (odapkit req render --check)
+        entry: odapkit req render concepts/wired/docs/requirements/requirements.toml --check
+        language: system
+        pass_filenames: false
+        files: ^concepts/wired/docs/requirements/
