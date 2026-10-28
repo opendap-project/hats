@@ -12,6 +12,10 @@ The OpenDAP HAT Standard and the OpenDAP HATs, in one repository:
 
 A concept becomes a folder of its own when its design starts. Each folder keeps its own `docs/` and `REUSE.toml`; the licence texts are in `LICENSES/`. The folders came from the former `hat-standard` and `hat-<name>` repositories with their history ([RFC 0017](https://github.com/opendap-project/rfcs/blob/main/text/0017-naming-and-topology.md)).
 
+## Tests
+
+Tests never inherit a hook's `GIT_*` variables: under pre-commit, git exports `GIT_DIR`, `GIT_INDEX_FILE` and others, and a test whose git inherits them acts on the repository being committed. `standard/tests/conftest.py` removes them before every test (an autouse fixture). Each language's protection is in the Developer Toolkit's [rule](https://github.com/opendap-project/tools#tests-never-inherit-a-hooks-git-variables); `odapkit audit` flags a test file that runs git without it.
+
 ## License
 
 This repository follows the [REUSE](https://reuse.software) layout: licence texts in `LICENSES/`, and each folder's `REUSE.toml` maps its paths. Copyright © 2026 The OpenDAP Project.
