@@ -18,7 +18,7 @@ Requirements for this project.
 | RAD-012 | The HAT shall carry its own radio and RF-exposure compliance as a separate product with its own declaration of conformity; it shall not be placed on the market as a single combined product with the device. | must | Draft |
 | RAD-013 | The HAT should define a receive-only hardware variant (transmit path depopulated) as a population option, for markets where a transmit-capable variant has no certification path. | should | Draft |
 | RAD-014 | The HAT shall operate within the device's 5 V HAT power budget (≤ 1.5 A from the T1) without its own battery; lower rails are regulated on the HAT. | must | Draft |
-| RAD-015 | The HAT's RFID/NFC research function should be distinct from, and not replace, the device's own NFC reader; the device's NFC remains its tap-to-pair and hand-off reader. | should | Draft |
+| RAD-015 | The HAT's RFID/NFC research function should stand on its own: the T1 has no NFC reader of its own, only an NFC dynamic tag for tap-to-pair and hand-off, so the HAT's tool is the device's only NFC reader. | should | Draft |
 | RAD-016 | LoRa/Meshtastic messaging is a secondary function of this HAT and, where fitted, should use a pre-certified radio module. | should | Draft |
 
 ## Context
@@ -29,4 +29,4 @@ Requirements for this project.
 - RAD-011, RAD-012: a wideband transmitter from 1 MHz to 6 GHz has no consumer certification route under US Part 15, the EU Radio Equipment Directive or the Japan Radio Act. The EU Radio Equipment Directive also covers receive-only radio equipment. Showing a region's spectrum limits is a legal limit made visible, not a capability lock (BRD-049).
 - RAD-013: whether the transmit path of a HackRF-derived half-duplex chain can be depopulated is **UNVERIFIED**; it is checked at schematic capture.
 - RAD-014: interface v2 gives a HAT 5 V at up to 1.5 A from the T1. The HAT's whole-board power draw is **UNVERIFIED** until it is measured on the first prototype.
-- RAD-015: the device's NFC reader is a fixed-function reader for tap-to-pair and hand-off; the HAT's tool adds low-level access for research (sniffing, emulation, cloning) at LF and HF.
+- RAD-015 reworded on 2026-10-27: the maintainers removed the NFC reader from the T1 main board, in every model, for board area; the T1 keeps its NFC dynamic tag for tap-to-pair and hand-off ([board feature blocks](https://github.com/opendap-project/board/blob/main/docs/specs/feature-blocks.md) #42). The HAT's tool gives low-level access for research (sniffing, emulation, cloning) at LF and HF. Was: distinct from, and not replacing, the device's own NFC reader.
