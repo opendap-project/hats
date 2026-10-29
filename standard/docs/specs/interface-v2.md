@@ -9,7 +9,7 @@
 
 ## 1. Scope
 
-This document defines the HAT interface: its contacts, their electrical class and position, power, attach and roles, identification, and the conditions every HAT meets. It names no SoC, SoC ball or SoC peripheral instance (HCS-021). A device implements it with whatever silicon it has and documents that mapping in its own repository; for the T1 the mapping is in the [board](https://github.com/opendap-project/board) repository.
+This document defines the HAT interface: its contacts, their electrical class and position, power, attach and roles, identification, and the conditions every HAT meets. It names no SoC, SoC ball or SoC peripheral instance (HCS-021). A device implements it with whatever silicon it has and documents that mapping in its own repository; for the T1 the mapping is in the [board](https://github.com/opendap-project/t1/tree/main/board) repository.
 
 The interface has two stages:
 
@@ -198,7 +198,7 @@ Layout rules:
 
 ### 9.2 Flat cable (T1; DF40C-50, 46 usable positions)
 
-One Hirose DF40C-50 pair at each end carries signals and power; it has the locking feature that the 100-position size lacks. The board and the device-side piece carry the DF40C-50DS-0.4V(51) receptacle and the cable the DF40C-50DP-0.4V(51) header at each end (board [HAT flat cable](https://github.com/opendap-project/board/blob/main/docs/specs/hat-flat-cable.md) spec). On the T1 the ESD protection of the field (`VBUS` TVS, SuperSpeed, `D±` and `CC` arrays) sits on the device-side piece next to the field, where a discharge enters; none is repeated on the board side of the cable. Numbering follows the Hirose DF40 drawings: contacts 1, 3, 5 … on row A, 2, 4, 6 … on row B (**UNVERIFIED** against the drawing; confirm before the FPC layout). Contacts 1, 2, 49 and 50 are metal fittings and carry nothing (DF40 catalog 2020, p. 10, note 3). The connector is not polarized (p. 10, note 5): both cable ends are keyed mechanically.
+One Hirose DF40C-50 pair at each end carries signals and power; it has the locking feature that the 100-position size lacks. The board and the device-side piece carry the DF40C-50DS-0.4V(51) receptacle and the cable the DF40C-50DP-0.4V(51) header at each end (board [HAT flat cable](https://github.com/opendap-project/t1/blob/main/board/docs/specs/hat-flat-cable.md) spec). On the T1 the ESD protection of the field (`VBUS` TVS, SuperSpeed, `D±` and `CC` arrays) sits on the device-side piece next to the field, where a discharge enters; none is repeated on the board side of the cable. Numbering follows the Hirose DF40 drawings: contacts 1, 3, 5 … on row A, 2, 4, 6 … on row B (**UNVERIFIED** against the drawing; confirm before the FPC layout). Contacts 1, 2, 49 and 50 are metal fittings and carry nothing (DF40 catalog 2020, p. 10, note 3). The connector is not polarized (p. 10, note 5): both cable ends are keyed mechanically.
 
 | Row A | Signal | Row B | Signal |
 |---|---|---|---|
@@ -256,7 +256,7 @@ Expected architecture. The reference HATs' requirements name the HAT type only; 
 - OpenDAP HAT Standard requirements: [`../requirements/README.md`](../requirements/README.md); ADR [0001](../adr/0001-all-pogo-interface-with-fixed-device-side-piece.md), [0004](../adr/0004-pogo-part-and-field-geometry.md), [0006](../adr/0006-hats-are-usb-only.md).
 - [HAT interface v1](interface-v1.md) (superseded, revision v1.1).
 - USB 3.2, USB 2.0, USB Type-C Cable and Connector, and USB Power Delivery specifications (USB-IF): current advertisement (Default, 1.5 A, 3.0 A), vSafe0V and vSafe5V, attach debounce, power and data role swaps, BOS descriptors and the PLATFORM capability type.
-- Board repository: [BOM v1](https://github.com/opendap-project/board/blob/main/docs/specs/bom-v1.md), [power tree v0](https://github.com/opendap-project/board/blob/main/docs/specs/power-tree-v0.md) (§4.6, §4.7).
+- Board repository: [BOM v1](https://github.com/opendap-project/t1/blob/main/board/docs/specs/bom-v1.md), [power tree v0](https://github.com/opendap-project/t1/blob/main/board/docs/specs/power-tree-v0.md) (§4.6, §4.7).
 - Parts library: Harwin P70-1000045R (2.0 A, 0.88 N ± 0.29 N, Ø 2.20 mm pad, Ø 1.50 mm barrel), Hirose DF40C-50 (0.3 A per contact, corner metal fittings, lock).
 - Mill-Max 0965-0-15-20-80-14-11-0 product data (2 A, working height 1.93–2.54 mm, 30 / 115 gf, 1,000,000 cycles, Ø 1.83 mm land), read 2026-10-22.
 - [RFC 0015](https://github.com/opendap-project/rfcs/blob/main/text/0015-hat-connector-pogo-field-and-usb-c-port-hat.md) (HAT connector and the USB-C port HAT).

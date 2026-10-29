@@ -9,7 +9,7 @@
 
 ## 1. Scope
 
-This document defines the HAT interface by **compatibility level**, **function** and **interface class**: which signals exist, what each carries, its electrical class, and its contact position. It names no SoC, SoC ball or SoC peripheral instance (HCS-021). A device implements the interface with whatever silicon it has and documents that mapping in its own repository; for the T1 the mapping is in the board repository ([pinout v1](https://github.com/opendap-project/board/blob/main/docs/specs/pinout-v1.md) HAT section).
+This document defines the HAT interface by **compatibility level**, **function** and **interface class**: which signals exist, what each carries, its electrical class, and its contact position. It names no SoC, SoC ball or SoC peripheral instance (HCS-021). A device implements the interface with whatever silicon it has and documents that mapping in its own repository; for the T1 the mapping is in the board repository ([pinout v1](https://github.com/opendap-project/t1/blob/main/board/docs/specs/pinout-v1.md) HAT section).
 
 The interface has two stages:
 
@@ -152,7 +152,7 @@ Margin rule (board BRD-049): each contact at or below **70 % of its rating in co
 | | | `GND` ×15 | 0.20 A (67 %) | — | 0.30 A (100 %) | — |
 
 - **Pogo count rule (v0 §3):** the fewest contacts that stay at or below 70 % of the pogo rating at the interface rating, plus one for redundancy: `HAT_5V` 2 + 1, `HAT_3V3` 1 + 1, `GND` 3 + 1. Each rail stays inside the rule with one contact open. Fence grounds are not counted as power returns. The second source, Mill-Max 0965, has the same 2 A rating (ADR 0004); any other part is re-checked against its rating.
-- **Device duties.** The device limits each rail it sources with a current limiter whose maximum trip current, tolerance included, stays inside the fault ceiling, and limits current drawn from a class F HAT on `HAT_5V` the same way. It enables `HAT_5V` only after reading the HAT EEPROM, and only for a HAT whose level, power class and extension function it supports. A device may set lower limits; the T1's are in the board [power tree §4.6](https://github.com/opendap-project/board/blob/main/docs/specs/power-tree-v0.md).
+- **Device duties.** The device limits each rail it sources with a current limiter whose maximum trip current, tolerance included, stays inside the fault ceiling, and limits current drawn from a class F HAT on `HAT_5V` the same way. It enables `HAT_5V` only after reading the HAT EEPROM, and only for a HAT whose level, power class and extension function it supports. A device may set lower limits; the T1's are in the board [power tree §4.6](https://github.com/opendap-project/t1/blob/main/board/docs/specs/power-tree-v0.md).
 - **HAT duties.** The HAT powers its EEPROM from `HAT_3V3`. Bulk capacitance on each rail stays at or below 470 µF (board power tree §4.6; **Draft**). USB devices on a HAT are self-powered and take their VBUS-sense input from `HAT_5V` or `HAT_3V3`: the interface has no VBUS contact.
 - **Flat cable (T1).** Its power and ground conductors are sized for the interface rating and fault ceilings (board BOM line 102).
 
@@ -351,5 +351,5 @@ Expected use. The reference HATs' requirements name the HAT type only; the signa
 
 - OpenDAP HAT Standard requirements: [`../requirements/README.md`](../requirements/README.md); ADR [0001](../adr/0001-all-pogo-interface-with-fixed-device-side-piece.md), [0002](../adr/0002-interface-v1-native-high-speed-management-over-usb.md), [0003](../adr/0003-compatibility-levels.md), [0004](../adr/0004-pogo-part-and-field-geometry.md), [0005](../adr/0005-interface-v1-1-shared-extension-and-contact-reduction.md).
 - [HAT interface v0](interface-v0.md) (superseded); v1.0 of this document (2026-10-22), in this repository's history.
-- Board repository: [pinout v1](https://github.com/opendap-project/board/blob/main/docs/specs/pinout-v1.md) (T1 mapping), [BOM v1](https://github.com/opendap-project/board/blob/main/docs/specs/bom-v1.md) (lines 65–70, 102), [power tree v0](https://github.com/opendap-project/board/blob/main/docs/specs/power-tree-v0.md) (§4.6, §4.10).
+- Board repository: [pinout v1](https://github.com/opendap-project/t1/blob/main/board/docs/specs/pinout-v1.md) (T1 mapping), [BOM v1](https://github.com/opendap-project/t1/blob/main/board/docs/specs/bom-v1.md) (lines 65–70, 102), [power tree v0](https://github.com/opendap-project/t1/blob/main/board/docs/specs/power-tree-v0.md) (§4.6, §4.10).
 - Parts library: `Hirose/DF40C-100DS-DP-0.4V.md` (DF40 catalog 2020: 0.3 A per contact, corner metal fittings, sizes), `Harwin/P70-1000045R.md` (drawing P70-10X0045R issue 4: 2.0 A, 0.88 N ± 0.29 N, Ø 2.20 mm pad).

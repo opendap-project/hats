@@ -10,7 +10,7 @@
 
 ## 1. Scope
 
-This document defines the HAT interface by **function and interface class**: which signals exist, what each carries, its electrical class, and its contact position. It names no SoC, SoC ball or SoC peripheral instance. A device implements the interface with whatever silicon it has and documents that mapping in its own repository; for the T1 the mapping is in the board repository ([pinout v1](https://github.com/opendap-project/board/blob/main/docs/specs/pinout-v1.md)). A device change, including a different SoC, keeps this interface valid (HCS-021).
+This document defines the HAT interface by **function and interface class**: which signals exist, what each carries, its electrical class, and its contact position. It names no SoC, SoC ball or SoC peripheral instance. A device implements the interface with whatever silicon it has and documents that mapping in its own repository; for the T1 the mapping is in the board repository ([pinout v1](https://github.com/opendap-project/t1/blob/main/board/docs/specs/pinout-v1.md)). A device change, including a different SoC, keeps this interface valid (HCS-021).
 
 The interface has two stages (requirements, Context):
 
